@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Load server",
+      "command": "go",
+      "args": [
+        "run",
+        "main.go"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests",
+      "command": "go",
+      "args": [
+        "test",
+        "-v",
+        "./..."
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests with coverage",
+      "command": "go",
+      "args": [
+        "test",
+        "-v",
+        "-cover",
+        "./..."
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Hot-reload server",
+      "command": "air",
+      "args": [
+        "-c",
+        ".air.toml"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Update swagger.yaml",
+      "command": "swag",
+      "args": [
+        "init",
+        "--outputTypes",
+        "yaml"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Format swagger annotation",
+      "command": "swag",
+      "args": [
+        "fmt"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "close": true
+      }
+    },
+    {
+      "label": "Load godoc",
+      "command": "godoc",
+      "args": [
+        "-http=:6060"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

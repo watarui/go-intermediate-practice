@@ -1,0 +1,49 @@
+{
+  "name": "go",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "go",
+  // Open the sub-folder with the source code
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-azuretools.vscode-docker",
+        "donjayamanne.githistory",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "amazonwebservices.aws-toolkit-vscode",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github"
+      ],
+      "settings": {
+        "remote.autoForwardPorts": false,
+        "go.useLanguageServer": true,
+        "[go]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          },
+          // Optional: Disable snippets, as they conflict with completion ranking.
+          "editor.snippetSuggestions": "none"
+        },
+        "[go.mod]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        },
+        "gopls": {
+          // Add parameter placeholders when completing a function.
+          "usePlaceholders": true,
+          // If true, enable additional analyses with staticcheck.
+          // Warning: This will significantly increase memory usage.
+          "staticcheck": true
+        }
+      }
+    }
+  }
+}

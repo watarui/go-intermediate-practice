@@ -1,0 +1,57 @@
+name: Workflow
+
+on: [push]
+
+env:
+  DB_ROOT_PASSWORD: github
+  DB_USER: github
+  DB_PASSWORD: github
+  DB_NAME: github
+  DB_HOST: localhost
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: github
+          MYSQL_DATABASE: github
+          MYSQL_USER: github
+          MYSQL_PASSWORD: github
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "stable"
+
+      - name: Show Docker containers (Connectivity test)
+        run: docker ps -a
+
+      - name: Show databases for root user (Connectivity test)
+        run: mysql --protocol=tcp -h localhost -P 3306 -u root -pgithub -e "SHOW DATABASES"
+
+      - name: Show databases for non-root user (Connectivity test)
+        run: mysql --protocol=tcp -h localhost -P 3306 -u github -pgithub -e "SHOW DATABASES"
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Run tests with coverage report output
+        run: go test -v ./... -coverprofile=coverage.out
+
+      - name: Collect code metrics
+        uses: k1LoW/octocov-action@v0

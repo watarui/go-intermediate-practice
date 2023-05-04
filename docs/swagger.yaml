@@ -1,0 +1,22 @@
+definitions:
+  models.HelloWorld:
+    properties:
+      message:
+        example: Hello, world!
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /hello:
+    get:
+      description: hello world を返す
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HelloWorld'
+      summary: GET /hello のハンドラ
+swagger: "2.0"

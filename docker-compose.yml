@@ -1,0 +1,44 @@
+version: "3"
+services:
+  go:
+    container_name: go
+    build:
+      context: .
+      dockerfile: ./docker/dev/go/Dockerfile
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+    environment:
+      DB_NAME: ${DATABASE}
+      DB_USER: ${USERNAME}
+      DB_PASSWORD: ${USERPASS}
+      DB_HOST: ${HOSTNAME}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      TZ: "Asia/Tokyo"
+    ports:
+      - 8081:8081
+      - 6060:6060 # godoc
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_USER: ${ROOTUSER}
+      MYSQL_ROOT_PASSWORD: ${ROOTPASS}
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_USER: ${USERNAME}
+      MYSQL_PASSWORD: ${USERPASS}
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3306:3306"
+    volumes:
+      - go-intermediate-practice-volume:/var/lib/mysql
+      - ./docker/dev/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/dev/mysql/initdb.d:/docker-entrypoint-initdb.d
+    restart: always
+
+volumes:
+  go-intermediate-practice-volume:
+    external: true
