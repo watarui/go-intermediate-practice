@@ -1,12 +1,13 @@
 # go-intermediate-practice
 
 https://techbookfest.org/product/jXDAEU1dR53kbZkgtDm9zx?productVariantID=dvjtgpjw8VDTXNqKaanTVi
+
 の勉強記録
 
 # 初期設定
 
 ```sh
-docker volume create go-intermediate-practice-volume
+make create-volume
 cp .env.example .env
 ```
 
