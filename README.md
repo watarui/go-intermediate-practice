@@ -7,6 +7,10 @@ https://techbookfest.org/product/jXDAEU1dR53kbZkgtDm9zx?productVariantID=dvjtgpj
 # 初期設定
 
 ```sh
+[GitHub] -> [Settings] -> [Actions] -> [General] -> [Workflow permissions] -> [Read and write permissions]
+```
+
+```sh
 make create-volume
 cp .env.example .env
 ```
