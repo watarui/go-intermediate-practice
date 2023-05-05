@@ -3,58 +3,49 @@
   "tasks": [
     {
       "label": "Load server",
-      "command": "go",
+      "command": "make",
       "args": [
-        "run",
-        "main.go"
+        "load"
       ],
       "problemMatcher": []
     },
     {
       "label": "Run tests",
-      "command": "go",
+      "command": "make",
       "args": [
-        "test",
-        "-v",
-        "./..."
+        "test"
       ],
       "problemMatcher": []
     },
     {
       "label": "Run tests with coverage",
-      "command": "go",
+      "command": "make",
       "args": [
-        "test",
-        "-v",
-        "-cover",
-        "./..."
+        "test-cover"
       ],
       "problemMatcher": []
     },
     {
       "label": "Hot-reload server",
-      "command": "air",
+      "command": "make",
       "args": [
-        "-c",
-        ".air.toml"
+        "hot-reload"
       ],
       "problemMatcher": []
     },
     {
       "label": "Update swagger.yaml",
-      "command": "swag",
+      "command": "make",
       "args": [
-        "init",
-        "--outputTypes",
-        "yaml"
+        "update-swagger"
       ],
       "problemMatcher": []
     },
     {
       "label": "Format swagger annotation",
-      "command": "swag",
+      "command": "make",
       "args": [
-        "fmt"
+        "format-swagger"
       ],
       "problemMatcher": [],
       "presentation": {
@@ -64,9 +55,9 @@
     },
     {
       "label": "Load godoc",
-      "command": "godoc",
+      "command": "make",
       "args": [
-        "-http=:6060"
+        "godoc"
       ],
       "problemMatcher": []
     },

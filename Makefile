@@ -28,10 +28,6 @@ create-volume: ## Create docker volume for db
 remove-volume: ## Remove docker volume for db
 	docker volume rm go-intermediate-practice-volume
 
-.PHONY: test
-test: ## Execute tests
-	go test -race -shuffle=on ./...
-
 .PHONY: show-data
 show-data: ## Show db data
 	mysql -u$(DB_USER) -h$(DB_HOST) -P3306 -D$(DB_NAME) -p$(DB_PASSWORD) --protocol=tcp -e "SELECT * FROM articles LEFT OUTER JOIN comments ON articles.article_id = comments.article_id"
@@ -40,6 +36,38 @@ show-data: ## Show db data
 seed:  ## Seed data
 	mysql -u$(DB_USER) -h$(DB_HOST) -P3306 -D$(DB_NAME) -p$(DB_PASSWORD) --protocol=tcp < /app/docker/mysql/init.d/1_createTable.sql
 	mysql -u$(DB_USER) -h$(DB_HOST) -P3306 -D$(DB_NAME) -p$(DB_PASSWORD) --protocol=tcp < /app/docker/mysql/init.d/2_createTable.sql
+
+.PHONY: load
+load: ## Load server
+	go run main.go
+
+.PHONY: hot-reload
+hot-reload: ## Hot-reload server
+	air -c .air.toml
+
+.PHONY: format-swagger
+format-swagger: ## Format swagger annotation
+	swag fmt
+
+.PHONY: update-swagger
+update-swagger: ## Update swagger.yaml
+	swag init --outputTypes yaml
+
+.PHONY: godoc
+godoc: ## Load godoc
+	godoc -http=:6060
+
+.PHONY: test
+test: ## Execute tests
+	go test -v ./...
+
+.PHONY: test-cover
+test-cover: ## Execute tests with coverage
+	go test -v -cover ./...
+
+.PHONY: test-race
+test-race: ## Execute tests (-race)
+	go test -race -shuffle=on ./...
 
 .PHONY: generate
 generate: ## Generate codes
