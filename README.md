@@ -20,6 +20,11 @@ VSCode のコマンドパレットを開いて Run Task してください
 mysql -udocker -hlocalhost -P3306 -Dsampledb -pdocker --protocol=tcp
 ```
 
+```sh
+root@ebf00470e6a7:/app# mysql -h mysql -u docker sampledb -pdocker < docker/dev/mysql/initdb.d/1_createTable.sql
+root@ebf00470e6a7:/app# mysql -h mysql -u docker sampledb -pdocker < docker/dev/mysql/initdb.d/2_insertData.sql
+```
+
 # OpenID Connect
 
 https://developers.google.com/identity/openid-connect/openid-connect?hl=ja#sendauthrequest
