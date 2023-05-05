@@ -1,6 +1,10 @@
 name: Workflow
 
-on: [push]
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
 
 env:
   DB_ROOT_PASSWORD: github
@@ -11,7 +15,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     services:
