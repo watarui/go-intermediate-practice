@@ -69,6 +69,14 @@
         "-http=:6060"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "Show database data",
+      "command": "make",
+      "args": [
+        "show-data"
+      ],
+      "problemMatcher": []
     }
   ]
 }
