@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./docker/dev/go/Dockerfile
     depends_on:
-      - go-intermediate-practice-mysql
+      - mysql
     volumes:
       - .:/app
     environment:

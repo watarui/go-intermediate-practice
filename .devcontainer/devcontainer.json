@@ -3,7 +3,7 @@
   "dockerComposeFile": [
     "../docker-compose.yml"
   ],
-  "service": "go-intermediate-practice-go",
+  "service": "go",
   // Open the sub-folder with the source code
   "workspaceFolder": "/app",
   "customizations": {
