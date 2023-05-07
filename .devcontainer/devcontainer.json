@@ -11,7 +11,6 @@
       "extensions": [
         "golang.go",
         "ms-azuretools.vscode-docker",
-        "donjayamanne.githistory",
         "mhutchie.git-graph",
         "eamodio.gitlens",
         "usernamehw.errorlens",
@@ -23,6 +22,11 @@
       "settings": {
         "remote.autoForwardPorts": false,
         "go.useLanguageServer": true,
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+          "--config=${workspaceFolder}/.golangci.yml",
+          "--fast"
+        ],
         "[go]": {
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
@@ -43,6 +47,9 @@
           // If true, enable additional analyses with staticcheck.
           // Warning: This will significantly increase memory usage.
           "staticcheck": true
+        },
+        "files.associations": {
+          "*.json.golden": "json"
         }
       }
     }
