@@ -1,24 +1,23 @@
 # go-intermediate-practice
 
 https://techbookfest.org/product/jXDAEU1dR53kbZkgtDm9zx?productVariantID=dvjtgpjw8VDTXNqKaanTVi
+
 の勉強記録
 
 # 初期設定
 
 ```sh
-docker volume create go-intermediate-practice-volume
+[GitHub] -> [Settings] -> [Actions] -> [General] -> [Workflow permissions] -> [Read and write permissions]
+```
+
+```sh
+make create-volume
 cp .env.example .env
 ```
 
 # コマンド
 
 VSCode のコマンドパレットを開いて Run Task してください
-
-# DB
-
-```sh
-mysql -udocker -hlocalhost -P3306 -Dsampledb -pdocker --protocol=tcp
-```
 
 # OpenID Connect
 

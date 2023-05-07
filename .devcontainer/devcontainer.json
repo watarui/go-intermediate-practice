@@ -11,17 +11,22 @@
       "extensions": [
         "golang.go",
         "ms-azuretools.vscode-docker",
-        "donjayamanne.githistory",
         "mhutchie.git-graph",
         "eamodio.gitlens",
         "usernamehw.errorlens",
         "amazonwebservices.aws-toolkit-vscode",
         "github.vscode-github-actions",
-        "github.vscode-pull-request-github"
+        "github.vscode-pull-request-github",
+        "streetsidesoftware.code-spell-checker"
       ],
       "settings": {
         "remote.autoForwardPorts": false,
         "go.useLanguageServer": true,
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+          "--config=${workspaceFolder}/.golangci.yml",
+          "--fast"
+        ],
         "[go]": {
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
@@ -42,6 +47,17 @@
           // If true, enable additional analyses with staticcheck.
           // Warning: This will significantly increase memory usage.
           "staticcheck": true
+        },
+        "files.associations": {
+          "*.json.golden": "json"
+        },
+        "cSpell.customDictionaries": {
+          "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:app}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+          }
         }
       }
     }
