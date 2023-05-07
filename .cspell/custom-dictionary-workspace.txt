@@ -1,0 +1,15 @@
+amazonwebservices
+apperrors
+deadcode
+eamodio
+errcheck
+errorlens
+gocognit
+gocyclo
+gofmt
+goimports
+golangci
+gopls
+govet
+staticcheck
+usernamehw

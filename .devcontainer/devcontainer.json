@@ -50,6 +50,14 @@
         },
         "files.associations": {
           "*.json.golden": "json"
+        },
+        "cSpell.customDictionaries": {
+          "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:app}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+          }
         }
       }
     }
